@@ -1,0 +1,45 @@
+<button mat-raised-button 
+    (click) = 'logoutUser()'
+    class="logout">LogOut</button>
+<!-- <h1>Welcome to the Dashboard</h1>
+<p>You have logged in succesfully</p> -->
+
+<!-- Label to display any error messages -->
+<label class="error-message">{{ errMessage }}</label>
+
+<!-- Expansion panel to add new notes -->
+
+<mat-expansion-panel class ='add-note-panel'>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Take a note
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <div class="contact-form">
+        <mat-form-field>
+          <input  [(ngModel)] = 'note.title' matInput placeholder="title" name="title" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>text</mat-label>
+            <textarea matInput [(ngModel)] = 'note.text'
+            name="text"></textarea> 
+        </mat-form-field>
+
+          <button mat-mini-fab color="primary" class="add-button" (click) ='addnote()'>Done</button>
+      </div>  
+  </mat-expansion-panel>
+
+<!-- Load and display the collection of notes from server as Material Cards with card title set to note title and card content set to note text  -->
+
+<section class="card-section">
+    <mat-card class="contact-card" *ngFor ='let cont of notes'>
+      <ng-container >
+      <mat-card-header>
+        <mat-card-title>{{cont.title}}</mat-card-title>
+        <mat-card-subtitle>{{cont.text}} </mat-card-subtitle>
+      </mat-card-header>
+    </ng-container>
+    </mat-card>
+  </section>

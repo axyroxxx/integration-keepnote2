@@ -1,0 +1,51 @@
+/* p ,h1{
+    font-size: 40px;
+    margin-top: 3em;
+    text-align: center;
+} */
+
+.logout{
+    margin: 2em 2em 2em 2em ;
+}
+
+.add-note-panel{
+    width: 60vw;
+    margin : 10vh auto;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    padding:1em; 
+}
+
+.add-button{
+    margin-left: auto;
+}
+
+.contact-card{
+    border: 1.1px solid transparent;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 5px;
+    padding:1em;
+    margin:1.2em;
+    background-color: #fff;
+    border-color: #e0e0e0;
+}
+
+.contact-card:hover{
+    box-shadow: 0 0 10px #ccc;
+
+}
+
+.card-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-basis: 0em;
+    margin: 1em;
+    padding: 2em;
+}
+

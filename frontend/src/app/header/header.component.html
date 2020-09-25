@@ -1,0 +1,10 @@
+<mat-toolbar>
+    <span >Integrated KeepNote</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>assignment_ind</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink='/login'>Log In</button>
+      <button mat-menu-item routerLink='/register'>Register</button>
+    </mat-menu>  
+</mat-toolbar>

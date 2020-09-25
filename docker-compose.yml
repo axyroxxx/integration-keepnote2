@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  NoteOperation:
+    image: noteoperation
+    build: notebackend/
+    restart: always
+    depends_on:
+      - mysqlDatabase
+    network_mode: host
+    ports:
+      - 8090:8090
+
+  UserAuthentication:
+    image: userauthentication
+    build: authenticationbackend/
+    restart: always
+    depends_on:
+      - mysqlDatabase
+    network_mode: host
+    ports:
+      - 8084:8084
+
+  KeepnoteFrontend:
+    image: keepnotefrontend
+    build: frontend/
+    network_mode: host
+    ports:
+      - 8080:8080
+
+  mysqlDatabase:
+    image: mysql
+    ports:
+      - 3306:3306
+    network_mode: host
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: approot
+      MYSQL_PASSWORD: apppass
+      MYSQL_DATABASE: keepnote
+
+
+
+

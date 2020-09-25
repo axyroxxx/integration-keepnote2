@@ -1,0 +1,190 @@
+<form [formGroup]='contactForm' (ngSubmit) ='addUser(contactForm)' class="example-form" #userForm = 'ngForm'>
+    
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input 
+      matInput required
+      [formControl]="firstName"
+      name="firstName"
+      placeholder="first name"
+      >
+      <mat-error *ngIf= "firstName.hasError('required')">
+        First Name is Required 
+      </mat-error>
+      <mat-error *ngIf= "firstName.hasError('minlength')">
+        Minimum length is 3
+      </mat-error>
+      <mat-error *ngIf= "firstName.hasError('maxlength')">
+        Maximum length is 30
+      </mat-error>  
+      <mat-error *ngIf= "!firstName.hasError('minlength') && firstName.hasError('pattern')">
+        Enter Valid Name
+      </mat-error>
+      
+    </mat-form-field>
+
+     <!-- <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input 
+        required
+        name="lastName"
+        [formControl]="lastName"
+        matInput placeholder="last name"
+        >
+    <mat-error *ngIf= "lastName.hasError('required')">
+        Last Name is Required
+      </mat-error>
+      <mat-error *ngIf= "lastName.hasError('minlength')">
+        Minimum length is 3
+      </mat-error>
+      <mat-error *ngIf= "lastName.hasError('maxlength')">
+        Maximum length is 30
+      </mat-error>  
+      <mat-error *ngIf= "!lastName.hasError('minlength') && lastName.hasError('pattern')">
+        Enter Valid Name
+      </mat-error>
+        
+      </mat-form-field> -->
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input 
+        required
+        name="username"
+        [formControl]="username"
+        matInput placeholder="Username"
+        >
+        <mat-error *ngIf = "username.hasError('required')">
+          password is required
+        </mat-error>
+      </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email Id</mat-label>
+        <input 
+        required
+        name="email"
+        [formControl]="email"
+        matInput placeholder="Email Id"
+        >
+
+        <mat-error *ngIf= "email.hasError('required')">
+            Email Id is Required
+          </mat-error>
+          <mat-error *ngIf= "email.hasError('pattern') || email.hasError('email')">
+            Enter Valid email id
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input 
+        required
+        name="address"
+        [formControl]="address"
+        matInput placeholder="Address"
+        >
+        <mat-error *ngIf ="address.hasError('required')">
+            Adddress is required
+        </mat-error>
+        <mat-error *ngIf ="address.hasError('minlength')">
+            Minimum  length is 20
+        </mat-error>
+        <mat-error *ngIf = "address.hasError('maxlength')">
+            Maximum length is 80
+        </mat-error>
+      </mat-form-field>
+
+      <div class="example-full-width">
+        <mat-label class="gender-label">Gender</mat-label><br>
+        <mat-radio-group aria-label="Select gender" 
+        [formControl] = "gender"
+        required
+         name = 'gender'>
+            <mat-radio-button value="male" >Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+        <!-- <div *ngIf ="gender.hasError('required')">
+          <p>Gender is required</p>
+        </div> -->
+      </div>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker"
+         name = "dob"
+        [formControl]="dob"
+        [min] = 'minDate'
+        [max] = 'maxDate'
+        required
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error *ngIf = "dob.hasError('required')">
+            Date of Birth is required
+        </mat-error>
+      </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input
+      matInput 
+      type="password"
+      name = "password"
+      [formControl]="password"
+      required
+      placeholder="Your password">
+
+      <mat-error *ngIf = "password.hasError('required')">
+        password is required
+      </mat-error>
+      <mat-error *ngIf = "password.hasError('minlength')">
+        Minimum length should be 8
+      </mat-error>
+      <mat-error *ngIf="password.hasError('maxlength')">
+          Maximum length should be 13
+      </mat-error>
+      <mat-error *ngIf =" password.hasError('hasNumber')">
+         password Should contain atleast 1 number 
+      </mat-error>
+      <mat-error *ngIf =" password.hasError('hasCapital')">
+        password Should contain  1 uppercase letter
+     </mat-error>
+     <mat-error *ngIf ="!password.hasError('required') && password.hasError('hasSmall')">
+      password Should contain  1 lowercase letter
+      </mat-error>
+      <mat-error *ngIf ="password.hasError('hasSpecial')">
+        password Should contain 1 Special Case letter
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Confirm Password</mat-label>
+      <input
+      matInput 
+      type = "password"
+      name = "currentpassword"
+      [formControl]="currentpassword"
+      required
+      placeholder="password">
+
+      <mat-error *ngIf = "currentpassword.hasError('required')">
+        password is required
+      </mat-error>
+      <mat-error *ngIf = "currentpassword.hasError('NoPassswordMatch')">
+        passwords should be same
+      </mat-error>
+      
+      
+    </mat-form-field>
+
+    <button mat-raised-button
+    type="submit" 
+    [disabled] = 'contactForm.invalid'
+    >Register</button> 
+  </form>
+
+ 
